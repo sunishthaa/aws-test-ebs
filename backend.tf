@@ -1,7 +1,10 @@
 terraform {
-  backend "s3" {
-    bucket = "terra-test-bucket"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "Sunishthaa_org"
+
+    workspaces {
+      prefix = "aws-test-"
+    }
   }
 }
