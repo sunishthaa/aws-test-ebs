@@ -22,6 +22,6 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "${data.terraform_remote_state.ec2.outputs.address}"
+    Name = data.terraform_remote_state.ec2.outputs.address
   }
 }
