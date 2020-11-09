@@ -1,13 +1,14 @@
-data "terraform_remote_state" "ec2" {
+data "terraform_remote_state" "foo" {
   backend = "remote"
+
   config = {
     organization = "Sunishthaa_org"
+
     workspaces = {
-      prefix = "aws-"
+      name = "aws-ec2"
     }
+  }
 }
-
-
 
 provider "aws" {
 
@@ -19,7 +20,7 @@ resource "aws_ebs_volume" "example" {
 }
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
 
   tags = {
     Name = data.terraform_remote_state.ec2.outputs.address
