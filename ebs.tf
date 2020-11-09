@@ -1,10 +1,10 @@
 data "terraform_remote_state" "ec2" {
   backend = "remote"
-    hostname = "app.terraform.io"
+  config = {
     organization = "Sunishthaa_org"
-    workspaces { 
-      prefix = "aws-" 
-    } 
+    workspaces = {
+      prefix = "aws-"
+    }
 }
 
 
